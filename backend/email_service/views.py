@@ -23,8 +23,8 @@ def detail_via_package(request):
         g = Github(token)
         repo = g.get_repo("georgemjohnson11/auth_system")
         pulls = repo.get_pulls(state="open")
-        serializer = PullRequestSerializer(pulls.get_page(0), context={'request': request}, many=True)
-        return Response(serializer.data)
+        # serializer = PullRequestSerializer(pulls.get_page(0), context={'request': request}, many=True)
+        return Response(pulls.get_page(0))
     return HttpResponse(f"Hi")
 
 def detail_via_API(request):
@@ -35,9 +35,10 @@ def detail_via_API(request):
     params = {
         "state": "open",
     }
-    headers = {'Authorization': f'token {token}'}
+    headers = {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Authorization': f'token {token}'}
     r = requests.get(query_url, headers=headers, params=params)
-    return HttpResponse(r.json())
+    logging.log(r)
+    return Response(r.text, headers=headers)
 
 def contact(request):
     if request.method == 'GET':
