@@ -1,0 +1,67 @@
+{% extends 'header.html' %}
+{% block content %}
+    <div class="jumbotron jumbotron-fluid">
+        <br/>
+        <p>This application gets information about Github repository pull requests using the Github API</p>
+    </div>
+    {% if latest_prs %}
+        <ul>
+        {% for pr in latest_prs %}
+            <li>{{ pr }}</li>
+        {% endfor %}
+        </ul>
+            <div class="col-md-9 mb-md-0 mb-5">
+            Please fill out the form below to email it to yourself
+                <form action="/api/contact/" method="post">
+                    {% csrf_token %}
+                    <div class="container row">
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <input type="text" id="id_contactName" name="contactName" class="form-control contact-input"
+                                       placeholder="Name" value="{{ current_name }}">
+                            </div>
+                        </div>
+                        <div class="container col-md-6">
+                            <div class="md-form mb-0">
+                                <input type="text" id="id_contactEmail" name="contactEmail"
+                                       placeholder="Email" class="form-control contact-input" value="{{ current_email }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container row">
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                                <input readonly type="text" id="id_contactSubject" name="contactSubject" class="form-control contact-input"
+                                       placeholder="Pull Requests to Review" value="Pull Requests to Review">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container row">
+                        <div class="col-md-12">
+                            <div class="md-form">
+                        <textarea readonly type="text" id="id_contactMessage" name="contactMessage" rows="2"
+                                  placeholder="{{ latest_prs_str | safe }}"
+                                  class="form-control md-textarea contact-input" value="{{ latest_prs_str }}"></textarea>
+                            <input type="hidden" id="id_contactMessage_hid" name="contactMessage_hid" class="form-control contact-input"
+                                       value="{{ latest_prs_str }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container row">
+                        <div class="col-md-12">
+                            <div class="md-form"> By clicking send, you acklowedge you are authorized to send emails
+                                to this recipient. Please check this box to continue
+                                 <input type="checkbox" id="authorization" name="authorization">
+                        </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-success custom-btn-class my-2 my-sm-0" type="submit">Send</button>
+                </form>
+                <div class="col-md-3 text-center">
+        </div>
+            </div>
+
+        {% else %}
+            <p>No pull requests are available.</p>
+    {% endif %}
+{% endblock %}

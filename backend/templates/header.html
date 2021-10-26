@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Github API Pul Requests</title>
+    {% load static %}
+    <meta property="og:site_name" content="Github API Pul Requests"/>
+    <meta charset="utf-8"/>
+    <meta property="og:description"
+          content="Github API Pul Requests utilize Github's API to get information about repositories."/>
+    <meta property="og:type" content="finance"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" style="background-color: #044962;">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+        </div>
+    </nav>
+</header>
+
+<!-- Begin page content -->
+<div style="margin-top: 55px;">
+    {% block content %}
+    {% endblock %}
+    <hr>
+</div>
+
+<footer class="footer bg-dark">
+      <div>
+        <span class="col col-sm-6 col-md-6 col-lg-6"> GithubAPI© 2021</span>
+      </div>
+
+      <br />
+      <div class="col">DISCLAIMER: Emails sent through this application are sent on behalf of a user. </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{% static 'js/jquery-slim.min.js' %}"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</div>
+</body>
+</html>
